@@ -14,5 +14,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log(`Ludgear Fence Co. running at http://localhost:${PORT}`)
+  console.log(`Sample Fence Co. running at http://localhost:${PORT}`)
 })
