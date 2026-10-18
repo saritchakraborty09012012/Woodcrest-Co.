@@ -1,0 +1,145 @@
+{
+  "textures": {
+    "brick": {
+      "map": "assets/tex/brick_diffuse.jpg",
+      "nor": "assets/tex/brick_nor_gl.jpg",
+      "rough": "assets/tex/brick_rough.jpg",
+      "ao": "assets/tex/brick_ao.jpg"
+    },
+    "grass": {
+      "map": "assets/tex/grass_diffuse.jpg",
+      "nor": "assets/tex/grass_nor_gl.jpg",
+      "rough": "assets/tex/grass_rough.jpg"
+    },
+    "fence": {
+      "map": "assets/tex/fence_diffuse.jpg",
+      "nor": "assets/tex/fence_nor_gl.jpg",
+      "rough": "assets/tex/fence_rough.jpg",
+      "ao": "assets/tex/fence_ao.jpg"
+    },
+    "bark": {
+      "map": "assets/tex/bark_diffuse.jpg",
+      "nor": "assets/tex/bark_nor_gl.jpg",
+      "rough": "assets/tex/bark_rough.jpg"
+    },
+    "roof": {
+      "map": "assets/tex/roof_diffuse.jpg",
+      "nor": "assets/tex/roof_nor_gl.jpg",
+      "rough": "assets/tex/roof_rough.jpg"
+    },
+    "asphalt": {
+      "map": "assets/tex/asphalt_diffuse.jpg",
+      "nor": "assets/tex/asphalt_nor_gl.jpg",
+      "rough": "assets/tex/asphalt_rough.jpg"
+    },
+    "litter": {
+      "map": "assets/tex/litter_diffuse.jpg",
+      "nor": "assets/tex/litter_nor_gl.jpg",
+      "rough": "assets/tex/litter_rough.jpg"
+    },
+    "siding": {
+      "map": "assets/tex/siding_diffuse.jpg",
+      "nor": "assets/tex/siding_nor_gl.jpg",
+      "rough": "assets/tex/siding_rough.jpg"
+    },
+    "planks": {
+      "map": "assets/tex/planks_diffuse.jpg",
+      "nor": "assets/tex/planks_nor_gl.jpg",
+      "rough": "assets/tex/planks_rough.jpg"
+    },
+    "leaves": {
+      "map": "assets/tex/leaves_map.jpg",
+      "alpha": "assets/tex/leaves_alpha.jpg",
+      "normal": "assets/tex/leaves_normal.jpg"
+    },
+    "leaves2": {
+      "map": "assets/tex/leaves2_map.jpg",
+      "alpha": "assets/tex/leaves2_alpha.jpg",
+      "normal": "assets/tex/leaves2_normal.jpg"
+    },
+    "needles": {
+      "map": "assets/tex/needles_map.jpg",
+      "alpha": "assets/tex/needles_alpha.jpg",
+      "normal": "assets/tex/needles_normal.jpg"
+    }
+  },
+  "models": {
+    "grassClump": {
+      "file": "assets/models/grassClump/grassClump.gltf",
+      "bin": "assets/models/grassClump/grass_bermuda_01.bin",
+      "tex": {
+        "grass_bermuda_01_nor_gl_1k.jpg": "assets/models/grassClump/grass_bermuda_01_nor_gl_1k.jpg",
+        "grass_bermuda_01_diff_1k.jpg": "assets/models/grassClump/grass_bermuda_01_diff_1k.jpg",
+        "grass_bermuda_01_arm_1k.jpg": "assets/models/grassClump/grass_bermuda_01_arm_1k.jpg"
+      }
+    },
+    "grassTall": {
+      "file": "assets/models/grassTall/grassTall.gltf",
+      "bin": "assets/models/grassTall/grass_medium_01.bin",
+      "tex": {
+        "grass_medium_01_nor_gl_1k.jpg": "assets/models/grassTall/grass_medium_01_nor_gl_1k.jpg",
+        "grass_medium_01_diff_1k.jpg": "assets/models/grassTall/grass_medium_01_diff_1k.jpg",
+        "grass_medium_01_arm_1k.jpg": "assets/models/grassTall/grass_medium_01_arm_1k.jpg"
+      }
+    },
+    "shrubA": {
+      "file": "assets/models/shrubA/shrubA.gltf",
+      "bin": "assets/models/shrubA/shrub_03.bin",
+      "tex": {
+        "shrub_03_arm_1k.jpg": "assets/models/shrubA/shrub_03_arm_1k.jpg",
+        "shrub_03_diff_1k.jpg": "assets/models/shrubA/shrub_03_diff_1k.jpg",
+        "shrub_03_nor_gl_1k.jpg": "assets/models/shrubA/shrub_03_nor_gl_1k.jpg"
+      }
+    },
+    "shrubB": {
+      "file": "assets/models/shrubB/shrubB.gltf",
+      "bin": "assets/models/shrubB/shrub_04.bin",
+      "tex": {
+        "shrub_04_nor_gl_1k.jpg": "assets/models/shrubB/shrub_04_nor_gl_1k.jpg",
+        "shrub_04_diff_1k.jpg": "assets/models/shrubB/shrub_04_diff_1k.jpg",
+        "shrub_04_arm_1k.jpg": "assets/models/shrubB/shrub_04_arm_1k.jpg"
+      }
+    },
+    "fern": {
+      "file": "assets/models/fern/fern.gltf",
+      "bin": "assets/models/fern/fern_02.bin",
+      "tex": {
+        "fern_02_arm_1k.jpg": "assets/models/fern/fern_02_arm_1k.jpg",
+        "fern_02_diff_1k.jpg": "assets/models/fern/fern_02_diff_1k.jpg",
+        "fern_02_nor_gl_1k.jpg": "assets/models/fern/fern_02_nor_gl_1k.jpg"
+      }
+    },
+    "rockA": {
+      "file": "assets/models/rockA/rockA.gltf",
+      "bin": "assets/models/rockA/rock_07.bin",
+      "tex": {
+        "rock_07_arm_1k.jpg": "assets/models/rockA/rock_07_arm_1k.jpg",
+        "rock_07_diff_1k.jpg": "assets/models/rockA/rock_07_diff_1k.jpg",
+        "rock_07_nor_gl_1k.jpg": "assets/models/rockA/rock_07_nor_gl_1k.jpg"
+      }
+    },
+    "rockB": {
+      "file": "assets/models/rockB/rockB.gltf",
+      "bin": "assets/models/rockB/rock_09.bin",
+      "tex": {
+        "rock_09_arm_1k.jpg": "assets/models/rockB/rock_09_arm_1k.jpg",
+        "rock_09_nor_gl_1k.jpg": "assets/models/rockB/rock_09_nor_gl_1k.jpg",
+        "rock_09_diff_1k.jpg": "assets/models/rockB/rock_09_diff_1k.jpg"
+      }
+    },
+    "weed": {
+      "file": "assets/models/weed/weed.gltf",
+      "bin": "assets/models/weed/dandelion_01.bin",
+      "tex": {
+        "dandelion_01_nor_gl_1k.jpg": "assets/models/weed/dandelion_01_nor_gl_1k.jpg",
+        "dandelion_01_diff_1k.jpg": "assets/models/weed/dandelion_01_diff_1k.jpg",
+        "dandelion_01_arm_1k.jpg": "assets/models/weed/dandelion_01_arm_1k.jpg"
+      }
+    }
+  },
+  "hdri": {
+    "noon": "assets/hdri/noon.hdr",
+    "day": "assets/hdri/day.hdr",
+    "sky": "assets/hdri/sky.hdr"
+  }
+}

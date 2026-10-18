@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --color-ink: #16160f;
+  --color-charcoal: #23231c;
+  --color-charcoal-2: #2c2c23;
+  --color-olive: #33332a;
+  --color-cream: #f4f0e6;
+  --color-bone: #e7e1d2;
+  --color-sand: #d8d0bd;
+  --color-amber: #ea8a2e;
+  --color-amber-deep: #c96f18;
+  --color-amber-soft: #f5b56b;
+  --color-moss: #4c7a34;
+  --color-limey: #a8c44a;
+  --color-muted: #8d897b;
+  --color-muted-2: #6f6b5e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 380;
+    letter-spacing: -0.015em;
+  }
+}
+
+/* ——— Lenis ——— */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ——— Utilities ——— */
+.micro {
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.card-glass {
+  background: linear-gradient(150deg, rgba(41, 40, 30, 0.82), rgba(28, 28, 21, 0.88));
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid rgba(244, 240, 230, 0.08);
+  box-shadow: 0 24px 70px -28px rgba(10, 10, 5, 0.75);
+}
+
+.hud-glass {
+  background: linear-gradient(155deg, rgba(38, 40, 28, 0.68), rgba(24, 25, 18, 0.78));
+  backdrop-filter: blur(16px) saturate(1.15);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15);
+  border: 1px solid rgba(244, 240, 230, 0.1);
+  box-shadow: 0 30px 80px -30px rgba(8, 10, 4, 0.8);
+}
+
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+}
+
+/* range input */
+input[type='range'].fence-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  outline: none;
+}
+input[type='range'].fence-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(35, 30, 15, 0.28);
+  cursor: grab;
+}
+input[type='range'].fence-range::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.06);
+}
+input[type='range'].fence-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(35, 30, 15, 0.28);
+  cursor: grab;
+}
+
+@keyframes soft-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.55); opacity: 0; }
+}
+.hotspot-ring {
+  animation: soft-pulse 2.4s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot-ring { animation: none; }
+}
