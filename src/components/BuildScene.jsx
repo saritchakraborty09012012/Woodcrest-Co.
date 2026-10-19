@@ -978,14 +978,25 @@ function CameraRig({ sectionRef, mouseRef }) {
     const p = clamp01(progressOf(sectionRef))
     const targetPos = posCurve.getPointAt(p)
     const targetLook = lookCurve.getPointAt(p)
+    const aspect = size.width / Math.max(1, size.height)
+
+    // Portrait / small screens: pull the camera back along the look→pos
+    // ray so the whole yard + fence reads as a longshot (not a close-up).
+    // Landscape / big screens: only a slight pull so the full fence run
+    // stays in frame without losing the original choreography.
+    const t = aspect < 1 ? 1 - aspect : aspect - 1
+    const portrait = aspect < 1
+    const pull = 1 + t * (portrait ? 1.9 : 0.2) // landscape 16:9 → ~1.14×
+    targetPos.sub(targetLook).multiplyScalar(pull).add(targetLook)
+    targetPos.y += t * (portrait ? 9 : 2.2)
+
     const m = mouseRef?.current ?? { x: 0, y: 0 }
     targetPos.x += m.x * 1.6
     targetPos.y += -m.y * 0.9 + Math.sin(s.clock.elapsedTime * 0.5) * 0.16
     targetLook.x += m.x * 0.8
     const k = Math.min(dt, 0.05)
-    // widen vertical FOV on portrait screens so the yard still fits
-    const aspect = size.width / Math.max(1, size.height)
-    const targetFov = aspect >= 1 ? 42 : Math.min(68, 42 + (1 - aspect) * 34)
+    // modest FOV widen on portrait (pull-back does most of the framing work)
+    const targetFov = aspect >= 1 ? 42 : Math.min(54, 42 + (1 - aspect) * 22)
     if (Math.abs(camera.fov - targetFov) > 0.05) {
       camera.fov = THREE.MathUtils.damp(camera.fov, targetFov, 4, k)
       camera.updateProjectionMatrix()
