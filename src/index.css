@@ -60,6 +60,13 @@ html.lenis body {
 }
 
 /* ——— Utilities ——— */
+/* full viewport height for sticky sections:
+   100vh first (old browsers), then 100svh (mobile URL-bar safe) */
+.sticky-vh {
+  height: 100vh;
+  height: 100svh;
+}
+
 .micro {
   font-size: 10px;
   line-height: 1.4;

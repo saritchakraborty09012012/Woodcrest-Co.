@@ -9,3 +9,5 @@ picker-shots.mjs
 .env
 .env.*
 !.env.example
+
+resp-*.png

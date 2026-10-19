@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import { scrollToId } from '../lib/scroll'
 
 const LINKS = [
@@ -41,6 +42,7 @@ export function Logo({ compact = false }) {
 
 export default function Nav() {
   const [solid, setSolid] = useState(false)
+  const [open, setOpen] = useState(false)
   useEffect(() => {
     const on = () => setSolid(window.scrollY > 40)
     on()
@@ -48,10 +50,15 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', on)
   }, [])
 
+  const go = (href) => {
+    setOpen(false)
+    scrollToId(href)
+  }
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
-        solid ? 'bg-ink/88 backdrop-blur-xl' : 'bg-ink/55 backdrop-blur-md'
+        solid || open ? 'bg-ink/88 backdrop-blur-xl' : 'bg-ink/55 backdrop-blur-md'
       }`}
     >
       <div className="mx-auto flex h-14 max-w-[1400px] items-center justify-between px-5 md:h-[60px] md:px-8">
@@ -60,26 +67,80 @@ export default function Nav() {
           {LINKS.map((l) => (
             <button
               key={l.href}
-              onClick={() => scrollToId(l.href)}
+              onClick={() => go(l.href)}
               className="micro text-[9px] text-cream/65 transition-colors duration-300 hover:text-cream"
             >
               {l.label}
             </button>
           ))}
           <button
-            onClick={() => scrollToId('#contact')}
+            onClick={() => go('#contact')}
             className="rounded-full border border-cream/45 px-4 py-2 text-[10px] font-semibold tracking-[0.16em] text-cream uppercase transition-all duration-300 hover:border-amber hover:bg-amber hover:text-ink"
           >
             Book a walkthrough
           </button>
         </nav>
-        <button
-          onClick={() => scrollToId('#pricing')}
-          className="rounded-full border border-cream/45 px-3.5 py-1.5 text-[9px] font-semibold tracking-[0.14em] text-cream uppercase md:hidden"
-        >
-          Price it
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <button
+            onClick={() => go('#pricing')}
+            className="rounded-full border border-cream/45 px-3.5 py-1.5 text-[9px] font-semibold tracking-[0.14em] text-cream uppercase"
+          >
+            Price it
+          </button>
+          <button
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            className="grid size-9 place-items-center rounded-full border border-cream/35 text-cream"
+          >
+            <svg viewBox="0 0 18 18" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              {open ? (
+                <>
+                  <path d="M4 4l10 10" />
+                  <path d="M14 4L4 14" />
+                </>
+              ) : (
+                <>
+                  <path d="M3 5.5h12" />
+                  <path d="M3 9h12" />
+                  <path d="M3 12.5h12" />
+                </>
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
+
+      {/* mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.22, 0.61, 0.36, 1] }}
+            className="overflow-hidden border-t border-cream/10 md:hidden"
+          >
+            <div className="flex flex-col gap-1 px-5 py-4">
+              {LINKS.map((l) => (
+                <button
+                  key={l.href}
+                  onClick={() => go(l.href)}
+                  className="rounded-xl px-3 py-2.5 text-left text-[13px] font-medium text-cream/80 transition-colors active:bg-cream/10"
+                >
+                  {l.label}
+                </button>
+              ))}
+              <button
+                onClick={() => go('#contact')}
+                className="mt-2 rounded-full bg-amber px-4 py-3 text-[12px] font-semibold text-ink"
+              >
+                Book a walkthrough
+              </button>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
@@ -99,7 +160,7 @@ export function EstimateWidget() {
 
   return (
     <div
-      className={`fixed bottom-5 right-5 z-40 transition-all duration-500 ${
+      className={`fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] z-40 transition-all duration-500 ${
         hide ? 'pointer-events-none translate-y-6 opacity-0' : 'translate-y-0 opacity-100'
       }`}
     >

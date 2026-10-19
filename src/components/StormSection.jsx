@@ -91,7 +91,7 @@ export default function StormSection() {
 
   return (
     <section id="repair" ref={ref} className="relative h-[320vh] bg-[#6e675c]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 sticky-vh overflow-hidden">
         <div
           className="absolute inset-y-0 -left-[10%] w-[160%]"
           style={{ transform: `translateX(${pan}%)` }}
@@ -126,8 +126,8 @@ export default function StormSection() {
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(100deg,rgba(12,12,8,0.62)_0%,rgba(12,12,8,0.18)_48%,rgba(12,12,8,0.42)_100%)]" />
 
         <div
-          className={`pointer-events-none absolute bottom-16 z-10 max-w-[560px] px-6 md:bottom-24 md:px-14 ${
-            cap.align === 'right' ? 'right-0 text-right' : 'left-0'
+          className={`pointer-events-none absolute bottom-14 z-10 max-w-[min(560px,calc(100vw-3rem))] px-0 md:bottom-24 ${
+            cap.align === 'right' ? 'right-6 text-right md:right-14' : 'left-6 md:left-14'
           }`}
         >
           <AnimatePresence mode="wait">
@@ -145,7 +145,7 @@ export default function StormSection() {
         </div>
 
         {/* progress ticks */}
-        <div className="absolute right-6 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-2">
+        <div className="absolute right-4 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-2 md:right-6">
           {SCENES.map((s, i) => (
             <span
               key={s.id}

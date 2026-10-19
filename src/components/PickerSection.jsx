@@ -27,27 +27,27 @@ function SpecCard({ type }) {
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         exit={{ opacity: 0, y: -18, filter: 'blur(4px)' }}
         transition={{ duration: 0.45, ease: [0.22, 0.61, 0.36, 1] }}
-        className="card-glass w-[min(340px,86vw)] rounded-[26px] p-6 text-cream"
+        className="card-glass w-[min(340px,86vw)] rounded-[26px] p-5 text-cream sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="micro pt-1 text-[8.5px] text-cream/45">{type.eyebrow}</div>
           <div className="text-right leading-none">
-            <div className="tabular font-display text-[26px] tracking-tight">
+            <div className="tabular font-display text-[24px] tracking-tight sm:text-[26px]">
               ${type.price[0]}–{type.price[1]}
             </div>
             <div className="micro mt-1 text-[8px] text-cream/45">per ft · installed</div>
           </div>
         </div>
 
-        <h3 className="mt-3 font-display text-[34px] leading-[0.95] tracking-[-0.02em]">
+        <h3 className="mt-2 font-display text-[28px] leading-[0.95] tracking-[-0.02em] sm:mt-3 sm:text-[34px]">
           {type.name[0]}
           <br />
           {type.name[1]}
         </h3>
 
-        <p className="mt-3 text-[12.5px] leading-relaxed text-cream/70">{type.desc}</p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-cream/70 sm:mt-3">{type.desc}</p>
 
-        <div className="mt-5 grid grid-cols-[1fr_1fr_auto] items-end gap-3">
+        <div className="mt-4 grid grid-cols-[1fr_1fr_auto] items-end gap-3 sm:mt-5">
           <div>
             <div className="micro text-[8px] text-cream/45">privacy</div>
             <div className="mt-1.5">
@@ -66,7 +66,7 @@ function SpecCard({ type }) {
           </div>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-1.5">
+        <div className="mt-4 hidden flex-wrap gap-1.5 min-[380px]:flex [@media(max-height:640px)]:hidden!">
           {type.chips.map((c) => (
             <span
               key={c}
@@ -77,12 +77,12 @@ function SpecCard({ type }) {
           ))}
         </div>
 
-        <p className="mt-4 text-[12px] leading-relaxed text-cream/78">
+        <p className="mt-4 hidden text-[12px] leading-relaxed text-cream/78 min-[380px]:block [@media(max-height:640px)]:hidden!">
           <span className="font-semibold text-cream">Best for: </span>
           {type.best}
         </p>
 
-        <div className="mt-5 flex items-center gap-4">
+        <div className="mt-4 flex flex-wrap items-center gap-4 sm:mt-5">
           <button
             onClick={() => scrollToId('#pricing')}
             className="rounded-full bg-amber px-5 py-2.5 text-[12.5px] font-semibold text-ink transition-all duration-300 hover:bg-amber-soft hover:shadow-[0_10px_30px_-8px_rgba(234,138,46,0.7)]"
@@ -91,7 +91,7 @@ function SpecCard({ type }) {
           </button>
           <button
             onClick={() => scrollToId('#process')}
-            className="text-[12px] text-cream/70 underline-offset-4 transition hover:text-cream hover:underline"
+            className="hidden text-[12px] text-cream/70 underline-offset-4 transition hover:text-cream hover:underline min-[380px]:block"
           >
             See it built ↗
           </button>
@@ -118,7 +118,7 @@ export default function PickerSection() {
       className="relative bg-[#2a2a22]"
       style={{ height: `${N * 100}vh` }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 sticky-vh overflow-hidden">
         {/* real photo of the selected fence style, cross-fading between types */}
         <AnimatePresence mode="sync">
           <motion.div
@@ -142,7 +142,7 @@ export default function PickerSection() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-ink/55 via-ink/20 to-transparent" />
 
         {/* copy stack */}
-        <div className="pointer-events-none absolute inset-0 flex flex-col px-6 pt-20 md:px-12 md:pt-24">
+        <div className="pointer-events-none absolute inset-0 flex flex-col px-5 pt-18 sm:px-6 md:px-12 md:pt-24">
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -150,11 +150,11 @@ export default function PickerSection() {
             transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
             className="pointer-events-auto max-w-[640px]"
           >
-            <div className="micro text-amber">fence selector — five styles — real maryland prices</div>
-            <h2 className="mt-2 font-display text-[clamp(42px,7vw,76px)] font-light leading-[0.94] tracking-[-0.025em] text-cream [text-shadow:0_4px_30px_rgba(10,14,4,0.45)]">
+            <div className="micro text-amber">fence selector — five styles — real prices</div>
+            <h2 className="mt-2 font-display text-[clamp(34px,7vw,76px)] font-light leading-[0.94] tracking-[-0.025em] text-cream [text-shadow:0_4px_30px_rgba(10,14,4,0.45)] sm:text-[clamp(42px,7vw,76px)]">
               Pick your fence.
             </h2>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2 sm:mt-5">
               {FENCE_TYPES.map((f, i) => (
                 <button
                   key={f.id}
@@ -171,7 +171,7 @@ export default function PickerSection() {
             </div>
           </motion.div>
 
-          <div className="pointer-events-none mt-auto mb-10 flex items-end justify-between gap-6">
+          <div className="pointer-events-none mt-auto mb-6 flex items-end justify-between gap-6 sm:mb-10">
             <div className="pointer-events-auto">
               <SpecCard type={type} />
             </div>

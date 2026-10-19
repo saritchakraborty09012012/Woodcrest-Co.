@@ -92,7 +92,7 @@ export function RealisticTree({ position, scale = 1, seed = 0, kind = 'deciduous
     return new THREE.MeshStandardMaterial({
       map: p.map,
       normalMap: p.normalMap,
-      roughnessMap: p.roughMap,
+      roughnessMap: p.roughnessMap,
       roughness: 1,
       metalness: 0,
     })

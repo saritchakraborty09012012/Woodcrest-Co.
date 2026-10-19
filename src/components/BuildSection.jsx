@@ -88,7 +88,7 @@ function Hud({ sectionRef }) {
       initial={{ opacity: 0, y: -14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
-      className="hud-glass absolute left-5 top-20 w-[248px] rounded-2xl px-4 py-3.5 text-cream md:left-8 md:top-24"
+      className="hud-glass absolute left-4 top-18 w-[min(248px,calc(100vw-2rem))] rounded-2xl px-4 py-3.5 text-cream md:left-8 md:top-24"
     >
       <div className="flex items-start justify-between">
         <div>
@@ -106,7 +106,7 @@ function Hud({ sectionRef }) {
         </div>
       </div>
       <div className="mt-3 h-px bg-cream/12" />
-      <ul className="mt-3 space-y-[7px]">
+      <ul className="mt-3 space-y-[7px] [@media(max-height:560px)]:hidden">
         {CHECKLIST.map((c, i) => (
           <li key={c} className="flex items-center gap-2.5">
             <span
@@ -167,7 +167,7 @@ function Captions({ sectionRef }) {
 
   return (
     <div
-      className={`pointer-events-none absolute bottom-16 z-10 max-w-[440px] md:bottom-20 ${
+      className={`pointer-events-none absolute bottom-14 z-10 max-w-[min(440px,calc(100vw-3rem))] sm:bottom-16 md:bottom-20 ${
         cap?.align === 'right' ? 'right-6 text-right md:right-12' : 'left-6 md:left-12'
       }`}
     >
@@ -233,7 +233,7 @@ export default function BuildSection() {
   const ref = useRef(null)
   return (
     <section id="install" ref={ref} className="relative h-[560vh] bg-[#bcd7e8]">
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 sticky-vh overflow-hidden">
         {/* static backdrop while the WebGL scene warms up / far away */}
         <div
           className="absolute inset-0"

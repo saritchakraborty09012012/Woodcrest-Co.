@@ -66,7 +66,7 @@ export default function Calculator() {
   const trackPct = ((length - 50) / (400 - 50)) * 100
 
   return (
-    <section id="pricing" className="relative scroll-mt-16 bg-cream pb-28 pt-20 md:pt-28">
+    <section id="pricing" className="relative scroll-mt-16 bg-cream pb-24 pt-16 md:pb-28 md:pt-28">
       <div className="mx-auto max-w-6xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function Calculator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 0.61, 0.36, 1] }}
-            className="rounded-[26px] bg-white p-7 shadow-[0_30px_80px_-40px_rgba(24,24,12,0.35)] md:p-9"
+            className="rounded-[26px] bg-white p-5 shadow-[0_30px_80px_-40px_rgba(24,24,12,0.35)] sm:p-7 md:p-9"
           >
             <div className="rounded-2xl bg-cream/70 p-3">
               <FencePreview typeId={typeId} />
@@ -179,7 +179,7 @@ export default function Calculator() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
-            className="card-glass flex flex-col rounded-[26px] p-7 text-cream md:p-9"
+            className="card-glass flex flex-col rounded-[26px] p-5 text-cream sm:p-7 md:p-9"
           >
             <div className="micro text-[9px] text-amber">
               typical estimate · {est.type.tab} · {length} ft{replacing ? ' · tear-out' : ''}

@@ -946,7 +946,7 @@ function FenceBuild({ sectionRef }) {
 /* ————— camera choreography ————— */
 
 function CameraRig({ sectionRef, mouseRef }) {
-  const { camera } = useThree()
+  const { camera, size } = useThree()
   const posCurve = useMemo(
     () =>
       new THREE.CatmullRomCurve3([
@@ -983,6 +983,13 @@ function CameraRig({ sectionRef, mouseRef }) {
     targetPos.y += -m.y * 0.9 + Math.sin(s.clock.elapsedTime * 0.5) * 0.16
     targetLook.x += m.x * 0.8
     const k = Math.min(dt, 0.05)
+    // widen vertical FOV on portrait screens so the yard still fits
+    const aspect = size.width / Math.max(1, size.height)
+    const targetFov = aspect >= 1 ? 42 : Math.min(68, 42 + (1 - aspect) * 34)
+    if (Math.abs(camera.fov - targetFov) > 0.05) {
+      camera.fov = THREE.MathUtils.damp(camera.fov, targetFov, 4, k)
+      camera.updateProjectionMatrix()
+    }
     cur.current.pos.x = THREE.MathUtils.damp(cur.current.pos.x, targetPos.x, 3.4, k)
     cur.current.pos.y = THREE.MathUtils.damp(cur.current.pos.y, targetPos.y, 3.4, k)
     cur.current.pos.z = THREE.MathUtils.damp(cur.current.pos.z, targetPos.z, 3.4, k)

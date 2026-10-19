@@ -68,7 +68,7 @@ function BeforeAfter({ mode }) {
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
-      className="relative aspect-[16/9] w-full cursor-ew-resize touch-none overflow-hidden rounded-[28px] bg-[#3a352c] shadow-[0_40px_110px_-40px_rgba(20,24,10,0.55)] select-none"
+      className="relative aspect-[4/3] w-full cursor-ew-resize touch-none overflow-hidden rounded-[18px] bg-[#3a352c] shadow-[0_40px_110px_-40px_rgba(20,24,10,0.55)] select-none sm:aspect-[16/9] sm:rounded-[28px]"
     >
       <img
         src={beforeSrc}
@@ -89,11 +89,11 @@ function BeforeAfter({ mode }) {
       </div>
 
       {/* labels */}
-      <div className="pointer-events-none absolute left-4 top-4 rounded-full bg-ink/72 px-3 py-1.5 backdrop-blur-sm">
-        <span className="micro text-[9px] text-cream/90">{beforeLabel}</span>
+      <div className="pointer-events-none absolute left-3 top-3 rounded-full bg-ink/72 px-2.5 py-1.5 backdrop-blur-sm sm:left-4 sm:top-4 sm:px-3">
+        <span className="micro text-[8.5px] text-cream/90 sm:text-[9px]">{beforeLabel}</span>
       </div>
-      <div className="pointer-events-none absolute right-4 top-4 rounded-full bg-amber px-3 py-1.5">
-        <span className="micro text-[9px] text-ink">{afterLabel}</span>
+      <div className="pointer-events-none absolute right-3 top-3 rounded-full bg-amber px-2.5 py-1.5 sm:right-4 sm:top-4 sm:px-3">
+        <span className="micro text-[8.5px] text-ink sm:text-[9px]">{afterLabel}</span>
       </div>
 
       {/* handle */}
@@ -113,7 +113,7 @@ function BeforeAfter({ mode }) {
             if (e.key === 'ArrowLeft') setPos((p) => Math.max(4, p - 3))
             if (e.key === 'ArrowRight') setPos((p) => Math.min(96, p + 3))
           }}
-          className="pointer-events-auto absolute top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-cream text-ink shadow-[0_10px_30px_rgba(10,14,4,0.45)] outline-none ring-amber/0 transition focus-visible:ring-4 focus-visible:ring-amber/60"
+          className="pointer-events-auto absolute top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-cream text-ink shadow-[0_10px_30px_rgba(10,14,4,0.45)] outline-none ring-amber/0 transition focus-visible:ring-4 focus-visible:ring-amber/60 sm:size-12"
         >
           <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M8 7 4 12l4 5M16 7l4 5-4 5M4 12h16" />
@@ -128,7 +128,7 @@ export default function ProcessSection() {
   const [mode, setMode] = useState('install')
 
   return (
-    <section id="process" className="relative scroll-mt-16 bg-cream pb-24 pt-16 md:pt-20">
+    <section id="process" className="relative scroll-mt-16 bg-cream pb-20 pt-14 md:pb-24 md:pt-20">
       {/* process cards */}
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-2 gap-y-8 border-y border-ink/10 py-8 md:grid-cols-4 md:divide-x md:divide-ink/8">

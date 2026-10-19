@@ -19,26 +19,26 @@ const COLUMNS = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="relative scroll-mt-16 overflow-hidden bg-ink pt-24 text-cream">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
+    <footer id="contact" className="relative scroll-mt-16 overflow-hidden bg-ink pt-16 text-cream md:pt-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            <h2 className="font-display text-[clamp(40px,6vw,72px)] font-light leading-[0.95] tracking-[-0.025em]">
+            <h2 className="font-display text-[clamp(34px,6vw,72px)] font-light leading-[0.95] tracking-[-0.025em]">
               Let’s walk
               <br />
               your <em className="italic text-amber">line.</em>
             </h2>
-            <p className="mt-5 max-w-[420px] text-[14px] leading-relaxed text-cream/65">
+            <p className="mt-5 max-w-[420px] text-[13.5px] leading-relaxed text-cream/65 sm:text-[14px]">
               Fifteen minutes on site, a written number in your hand. Serving
               central Maryland — Anne Arundel, Howard, Baltimore, Harford and
               the Eastern Shore.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3 sm:mt-8">
               <a
                 href="tel:+919876543210"
                 className="rounded-full bg-amber px-6 py-3.5 text-[13px] font-semibold text-ink transition-all duration-300 hover:bg-amber-soft"
@@ -52,7 +52,7 @@ export default function Footer() {
                 Price it first
               </button>
             </div>
-            <p className="mt-6 text-[12.5px] text-cream/45">
+            <p className="mt-5 break-words text-[12.5px] text-cream/45 sm:mt-6">
               Mon–Fri 7:30a–5p · Sat by appointment · hello@samplefence.example
             </p>
           </motion.div>
